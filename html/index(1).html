@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic CMS</title>
+  <!-- custom css -->
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="navbar-container">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Dynamic CMS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-disabled="true">Contact</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-link bg-warning text-decoration-none"><a href="Admin.html"
+                  class="text-decoration-none text-dark" target="_self">Admin</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="landing-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="main-text my-5">
+            <h1 id="Greeting" class="text-warning">Good morning</h1>
+            <h2 class="text-white fs-1">Welcome To <span class="text-warning">Dynamic CMS</span></h2>
+            <p class="text-white fs-4">Users can create and edit content within the system using a user-friendly
+              interface, often without needing to have knowledge of coding or technical skills.</p>
+            <button type="button" class="btn btn-link bg-warning text-decoration-none"><a href="login.html"
+                class="text-decoration-none text-dark" target="_self">Sign In</a>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="main-img my-5">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1684331411879-9c5189065fe2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3RpY2t5JTIwbm90ZXN8ZW58MHwwfDB8fHww"
+              alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="articles">
+      <div class="container">
+        <h2 class="text-white text-center fw-bold">Our Articles</h2>
+        <table class="table table-success table-striped table-hover my-5">
+          <thead>
+            <tr>
+              <th scope="col">S.No</th>
+              <th scope="col">Article Title</th>
+              <th scope="col">Article ID</th>
+              <th scope="col">URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Global Warning</td>
+              <td>01</td>
+              <td><a
+                  href="https://www.nationalgeographic.org/encyclopedia/global-warming/#:~:text=It%20also%20refers%20to%20sea,and%20its%20impact%20on%20Earth."
+                  class="text-decoration-none">Check URL</a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Advance AI</td>
+              <td>02</td>
+              <td><a href="https://www.advance.ai/en/advance-ai-technology" class="text-decoration-none">Check URL</a>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Data Science</td>
+              <td>03</td>
+              <td><a href="https://www.discoverdatascience.org/articles/" class="text-decoration-none">Check URL</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  <!-- script js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <script>
+    let greeting = document.getElementById('Greeting');
+    const now = new Date();
+    const hour = now.getHours();
+
+    if (hour >= 5 && hour < 12) {
+      greeting.innerHTML = 'Good morning';
+    } else if (hour >= 12 && hour < 18) {
+      greeting.innerHTML = 'Good afternoon';
+    }else if(hour >=18 && hour <= 19){
+      greeting.innerHTML = "Good Evening"
+    } 
+    else {
+      greeting.innerHTML = 'Good Night';
+    }
+
+
+  </script>
+</body>
+
+</html>

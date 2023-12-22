@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diary Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(rgba(22, 14, 18,0.4), rgba(22, 14, 18,0.4)),url(https://images.unsplash.com/photo-1516201580490-33550d32de5c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGRhaWx5JTIwZGlhcnl8ZW58MHwwfDB8fHww);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position:  center;
+      margin:0 0 0 10%;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+
+    #diary {
+      width: 300px;
+      background: url('https://cdn.s.kittl.com/pr:sharp/rs:fit:720:720:0/plain/api/templates/335-Almost-Card-Design-Template-clnero3jy0dtc22y9cmhtenxo.png@webp');
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgb(255, 255, 255);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      position:relative;
+    }
+
+   
+
+    input{
+      margin: 10px 0;
+    }
+
+    #diary textarea {
+      width: 100%;
+      height: 150px;
+      margin: 10px 0;
+      padding: 10px 0 0 12px;
+    }
+
+    #diary button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #entries {
+      max-width: 600px;
+      word-wrap: break-word;
+      margin: auto;
+    }
+
+    .entry {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .entry button {
+      background-color: #ff6347;
+      color: #fff;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="diary">
+    <h2>Your Diary</h2>
+    <label for="entryDate">Date:</label>
+    <input type="date" id="entryDate">
+    <textarea id="entryText" placeholder="Write your entry..."></textarea>
+    <button onclick="addEntry()">Add Entry</button>
+    <!-- <div id="entries"></div> -->
+  </div>
+  <div id="entries"></div>
+
+  <script>
+    function addEntry() {
+      const entryDate = document.getElementById('entryDate').value;
+      const entryText = document.getElementById('entryText').value;
+
+      if (entryDate.trim() === '' || entryText.trim() === '') {
+        alert('Please enter both date and entry text.');
+        return;
+      }
+
+      const entryDiv = document.createElement('div');
+      entryDiv.classList.add('entry');
+
+      const entryHeader = document.createElement('div');
+      entryHeader.innerHTML = `<strong>${entryDate}</strong>`;
+      const editButton = document.createElement('button');
+      editButton.style.margin= "0 5px";
+      editButton.textContent = 'Edit';
+      editButton.onclick = () => editEntry(entryDiv);
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = () => deleteEntry(entryDiv);
+
+      entryHeader.appendChild(editButton);
+      entryHeader.appendChild(deleteButton);
+      entryDiv.appendChild(entryHeader);
+
+      const entryContent = document.createElement('div');
+      entryContent.textContent = entryText;
+      entryDiv.appendChild(entryContent);
+      entryDiv.style.background = "rgba(255,255,255,0.7)";
+      document.getElementById('entries').appendChild(entryDiv);
+
+      document.getElementById('entryDate').value = '';
+      document.getElementById('entryText').value = '';
+    }
+
+    function editEntry(entryDiv) {
+      const entryContent = entryDiv.querySelector('div:last-child');
+      const newText = prompt('Edit your entry:', entryContent.textContent);
+      if (newText !== null) {
+        entryContent.textContent = newText;
+      }
+    }
+
+    function deleteEntry(entryDiv) {
+      const confirmDelete = confirm('Are you sure you want to delete this entry?');
+      if (confirmDelete) {
+        entryDiv.remove();
+      }
+    }
+  </script>
+</body>
+
+</html>

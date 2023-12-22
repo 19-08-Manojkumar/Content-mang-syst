@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Registration Page</title>
+  <style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background:linear-gradient(rgba(22, 14, 18,0.4), rgba(22, 14, 18,0.4)), url('https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvbnRlbnQlMjBtYW5hZ2VtZW50JTIwc3lzdGVtfGVufDB8MHwwfHx8MA%3D%3D');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+
+.container {
+width: 400px;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+background: rgba(37, 21, 21, 0.8);
+backdrop-filter: saturate(180%) blur(10px);
+color: white;
+}
+
+h2 {
+margin-bottom: 20px;
+color: white;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+text-align: left;
+}
+
+input {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+font-size: 16px;
+}
+
+button {
+background-color: #4caf50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+button:hover {
+background-color: #45a049;
+}
+
+.error-message {
+color: red;
+}
+
+a{
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+}
+  </style>
+</head>
+
+<body>
+ <div class="container">
+  <h2>Registration</h2>
+  <form id="registration-form" onsubmit="validateForm(event)">
+   <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" required>
+      </div>
+    <div class="form-group">
+     <label for="email">Email</label>
+     <input type="email" id="email" required>
+      </div>
+     <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+       <label for="reenter-password">Re-enter Password</label>
+       <input type="password" id="reenter-password" required>
+      </div>
+       <button type="submit">Register</button>
+       <p>Already have an account?<a href="login.html">Login</a></p>
+  </form>
+  <p id="error-message" class="error-message"></p>
+ </div>
+ <script>
+  var password;
+ function validateForm(event) {
+ event.preventDefault();
+ 
+ const username = document.getElementById('username').value;
+ const email = document.getElementById('email').value;
+ const password = document.getElementById('password').value;
+ const reenterPassword = document.getElementById('reenter-password').value;
+ const errorMessage = document.getElementById('error-message');
+ 
+ if (username.trim() === "" || password.trim() === "" || reenterPassword.trim() === ""){
+ errorMessage.textContent = "Please fill in all fields.";
+ } else if (password !== reenterPassword) {
+ errorMessage.textContent = "Passwords do not match.";
+ } else {
+ errorMessage.textContent = "";
+ // Perform registration or other actions here
+ alert("Registration successful!");
+ }
+ }</script>
+</body>
+
+</html>

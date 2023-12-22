@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Sticky Note</title>
+ <style>
+    body {
+  font-family: Arial, sans-serif;
+  background : linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url("https://images.unsplash.com/photo-1526378787940-576a539ba69d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHN0aWNreSUyMG5vdGVzfGVufDB8MHwwfHx8MA%3D%3D");
+      background-size : cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.sticky-note {
+  padding: 20px;
+  background-color: #ffd700;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 200px;
+  height: 150px;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.note {
+  background-color: #ffeeaa;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  
+}
+
+.close-icon{
+  background-color: red;
+  color: white;
+  margin: 0 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+ </style>
+</head>
+
+<body>
+ <div id="app" class="container">
+  <div class="sticky-note">
+   <textarea id="note-text" placeholder="Enter your note here..."></textarea>
+   <button onclick="addNote()">Add Note</button>
+  </div>
+  <div id="notes-container" class="notes-container" onclick="deleteNote(event)"></div>
+ </div>
+ <script>
+    let colorCode = [1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+let colorValue = '';
+
+function addNote() {
+  for (let i = 1; i <= 6; i++) {
+    colorValue += colorCode[Math.round(Math.random() * (colorCode.length - 1))];
+  }
+ 
+  const noteText = document.getElementById('note-text').value;
+  if (noteText.trim() !== "") {
+    const noteElem = document.createElement('div');
+    noteElem.className = "note";
+    const closeIcon = document.createElement('span');
+    closeIcon.className = "close-icon";
+    closeIcon.textContent = "×";
+    noteElem.textContent = noteText;
+    noteElem.style.background = "#"+colorValue;
+    noteElem.appendChild(closeIcon);
+    document.getElementById('notes-container').appendChild(noteElem);
+    document.getElementById('note-text').value = "";
+    colorValue = '';
+  }
+}
+
+function deleteNote(event) {
+  if (event.target.classList.contains('close-icon')) {
+    event.target.parentNode.remove();
+  }
+}
+ </script>
+</body>
+
+</html>

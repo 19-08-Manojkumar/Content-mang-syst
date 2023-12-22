@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dashboard-container{
+    background-color: bisque;
+    height: 100vh;
+    width: 100%;
+}
+
+.dashboard-container .profile-status{
+    /* background-color: rgba(4, 112, 89, 0.6); */
+    height: 100vh;
+    width: 100%;
+}
+
+.main-status{
+    display: flex;
+    justify-content: space-between;
+}
